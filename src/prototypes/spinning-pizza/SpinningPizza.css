@@ -1,0 +1,90 @@
+.pizza-stage {
+  position: relative;
+  width: min(100%, 260px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.pizza-ring {
+  position: absolute;
+  inset: 20px;
+  border: 2px dashed var(--line);
+  border-radius: 50%;
+}
+
+.pizza-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg) translateX(86px) rotate(0deg);
+}
+
+.pizza-orbit-spin {
+  animation: pizza-orbit-spin 1.8s linear;
+}
+
+@keyframes pizza-orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(86px) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(86px) rotate(-360deg);
+  }
+}
+
+.pizza-icon {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.pizza-cut {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 28px;
+  margin-top: -28px;
+  margin-left: -1px;
+  background: var(--line);
+  transform-origin: center bottom;
+}
+
+.pizza-cut-a {
+  transform: rotate(0deg);
+}
+
+.pizza-cut-b {
+  transform: rotate(60deg);
+}
+
+.pizza-cut-c {
+  transform: rotate(120deg);
+}
+
+.pizza-topping {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  background: var(--fill);
+}
+
+.pizza-topping-a {
+  top: 12px;
+  left: 26px;
+}
+
+.pizza-topping-b {
+  top: 30px;
+  left: 12px;
+}
+
+.pizza-topping-c {
+  top: 32px;
+  left: 38px;
+}
