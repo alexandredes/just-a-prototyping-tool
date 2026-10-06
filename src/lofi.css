@@ -1,0 +1,79 @@
+/* Lo-fi wireframe primitives. Black, white and greys only — no colour, no shadows, no images. */
+
+:root {
+  --ink: #000;
+  --paper: #fff;
+  --grey: #666;
+  --line: #000;
+  --fill: #eee;
+  --radius: 0;
+  --gap: 16px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+h1, h2, h3 { margin: 0; line-height: 1.2; }
+h1 { font-size: 1.6rem; }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1rem; }
+p { margin: 0; }
+a { color: var(--ink); }
+
+/* Layout */
+.lofi-page { max-width: 960px; margin: 0 auto; padding: 48px 16px; display: flex; flex-direction: column; gap: calc(var(--gap) * 2); }
+.lofi-narrow { max-width: 480px; }
+.lofi-stack { display: flex; flex-direction: column; gap: var(--gap); }
+.lofi-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.lofi-grid { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); }
+
+/* Surfaces */
+.lofi-box { border: 2px solid var(--line); padding: var(--gap); }
+.lofi-divider { border: 0; border-top: 2px solid var(--line); margin: 0; width: 100%; }
+.lofi-placeholder {
+  display: flex; align-items: center; justify-content: center;
+  border: 2px dashed var(--line); color: var(--grey); min-height: 48px; padding: 8px;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 1px), var(--fill) 50%, transparent calc(50% + 1px)),
+    linear-gradient(to top left, transparent calc(50% - 1px), var(--fill) 50%, transparent calc(50% + 1px));
+}
+
+/* Text */
+.lofi-muted { color: var(--grey); }
+.lofi-small { font-size: 0.8rem; }
+.lofi-scribble { display: block; height: 0.6em; background: var(--fill); margin: 0.4em 0; }
+
+/* Controls */
+.lofi-btn {
+  font: inherit; color: var(--ink); background: var(--paper);
+  border: 2px solid var(--line); border-radius: var(--radius);
+  padding: 10px 16px; min-height: 44px; cursor: pointer;
+}
+.lofi-btn:hover { background: var(--fill); }
+.lofi-btn-primary { background: var(--ink); color: var(--paper); }
+.lofi-btn-primary:hover { background: #333; }
+.lofi-btn:focus-visible, .lofi-input:focus-visible, a:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.lofi-field { display: flex; flex-direction: column; gap: 4px; }
+.lofi-input {
+  font: inherit; color: var(--ink); background: var(--paper);
+  border: 2px solid var(--line); border-radius: var(--radius); padding: 10px 12px; min-height: 44px; width: 100%;
+}
+.lofi-input::placeholder { color: var(--grey); }
+
+/* Index list */
+.lofi-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.lofi-list-item { display: flex; flex-direction: column; gap: 2px; padding: var(--gap); border: 2px solid var(--line); text-decoration: none; }
+.lofi-list-item:hover { background: var(--fill); }
+.lofi-list-title { font-weight: 700; text-decoration: underline; }
+
+/* Back-to-index link rendered by every prototype */
+.lofi-back { align-self: flex-start; font-size: 0.8rem; }
+
+@media (max-width: 600px) {
+  .lofi-page { padding: 24px 12px; }
+  .lofi-row > .lofi-btn { flex: 1 1 auto; }
+}
